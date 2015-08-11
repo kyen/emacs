@@ -1,10 +1,13 @@
-;; ~/.emacs.d/site-lisp 以下全部読み込み
-(let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))
-  (add-to-list 'load-path default-directory)
-  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-      (normal-top-level-add-subdirs-to-load-path)))
+;; el-get
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
-;; init
-(require 'init-loader)
+(el-get-bundle! init-loader)
+
 (setq init-loader-show-log-after-init nil)
 (init-loader-load "~/.emacs.d/inits")

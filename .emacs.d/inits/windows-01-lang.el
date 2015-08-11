@@ -10,18 +10,20 @@
 (set-keyboard-coding-system 'sjis)
 
 ;;; 標準フォント
-;(set-default-font "Consolas 11")
-(set-default-font "ＭＳ ゴシック 11")
+(set-default-font "Consolas 11")
 
+(set-face-attribute 'default nil
+                    :family "Ricty"
+                    :height 120)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
-                  '("ＭＳ ゴシック" . "unicode-bmp")
-                  )
-
+                  (cons "Ricty" "iso10646-1"))
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0212
+                  (cons "Ricty" "iso10646-1"))
 (set-fontset-font (frame-parameter nil 'font)
                   'katakana-jisx0201
-                  '("ＭＳ ゴシック" . "unicode-bmp")
-                  )
+                  (cons "Ricty" "iso10646-1"))
 
 ;; 丸数字などの機種依存文字対策
 (coding-system-put 'iso-2022-jp :decode-translation-table

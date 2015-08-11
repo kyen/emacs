@@ -21,3 +21,6 @@
 
 ;; org-default-notes-file‚Ìƒtƒ@ƒCƒ‹–¼
 (setq org-default-notes-file "notes.org")
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "READ(r)" "|" "REVIEWED(v)")))

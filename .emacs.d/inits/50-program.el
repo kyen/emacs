@@ -31,3 +31,7 @@
 (setq c-auto-newline nil)
 ;;半自動インデント指定
 (setq c-tab-always-indent nil)
+
+;; 括弧色付け
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)

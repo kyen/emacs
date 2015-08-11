@@ -1,8 +1,6 @@
 ;;-------------------------
 ;; howm
 ;;-------------------------
-(add-to-list 'load-path "~/.emacs.d/vendor/howm")
-
 (setq howm-menu-lang 'ja)
 (require 'howm)
 (global-set-key "\C-c,," 'howm-menu)
