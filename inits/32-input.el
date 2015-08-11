@@ -7,7 +7,8 @@
 
 ;; Ž©“®•âŠ®
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/share/auto-comlete/ac-dict")
+(add-to-list 'ac-dictionary-directories
+             (expand-file-name "auto-comlete/ac-dict" user-emacs-directory))
 (ac-config-default)
 (setq ac-use-menu-map t)
 

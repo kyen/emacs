@@ -9,9 +9,8 @@
               "/sw/bin"
               "/usr/local/bin"
               (expand-file-name "~/bin")
-              (expand-file-name "~/.emacs.d/bin")
               ))
 ;; PATH ‚Æ exec-path ‚É“¯‚¶•¨‚ð’Ç‰Á‚µ‚Ü‚·
- (when (and (file-exists-p dir) (not (member dir exec-path)))
+  (when (and (file-exists-p dir) (not (member dir exec-path)))
     (setenv "PATH" (concat dir ":" (getenv "PATH")))
-      (setq exec-path (append (list dir) exec-path))))
+    (setq exec-path (append (list dir) exec-path))))
