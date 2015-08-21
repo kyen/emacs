@@ -38,6 +38,9 @@
     elpa:molokai-theme
     elpa:solarized-theme
     elpa:wgrep-ag
+    elpa:ace-jump-mode
+    ace-isearch
+    avy
     ))
 
 (loop for pkg in el-get-package-list

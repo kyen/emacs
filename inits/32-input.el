@@ -52,3 +52,12 @@
     ("o"        . 'mc/sort-regions)
     ("O"        . 'mc/reverse-regions)))
 
+;; ƒqƒ“ƒg•¶š‚Ég‚¤•¶š‚ğw’è‚·‚é
+(setq ace-jump-mode-move-keys
+      (append "asdfghjkl;:]qwertyuiop@zxcvbnm,." nil))
+;; ace-jump-word-mode‚Ì‚Æ‚«•¶š‚ğq‚Ë‚È‚¢‚æ‚¤‚É‚·‚é
+(setq ace-jump-word-mode-use-query-char nil)
+(global-set-key (kbd "C-;") 'ace-jump-word-mode)
+(global-set-key (kbd "C-M-;") 'ace-jump-line-mode)
+
+(global-ace-isearch-mode 1)
