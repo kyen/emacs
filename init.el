@@ -10,7 +10,7 @@
 ;; init loader
 (el-get-bundle! init-loader)
 
-(setq init-loader-show-log-after-init nil)
+;;(setq init-loader-show-log-after-init nil)
 (init-loader-load
  (expand-file-name "inits"
 		   (file-name-directory (file-truename load-file-name))))

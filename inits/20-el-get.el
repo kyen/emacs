@@ -3,14 +3,17 @@
 (defvar el-get-package-list
   '(
     ag
+    bm
     shell-history
     shell-pop
     color-theme
     color-theme-almost-monokai
     gtags
+    migemo
     helm
     helm-ls-git
     helm-gtags
+    helm-migemo
     flymake
     emmet-mode
     yaml-mode
@@ -30,6 +33,9 @@
     evil
     ddskk
     wgrep
+    ace-isearch
+    avy
+    exec-path-from-shell
     elpa:helm-ag
     elpa:helm-emmet
     elpa:helm-flymake
@@ -39,8 +45,8 @@
     elpa:solarized-theme
     elpa:wgrep-ag
     elpa:ace-jump-mode
-    ace-isearch
-    avy
+    ;; from GitHub
+    yasuyk/helm-bm
     ))
 
 (loop for pkg in el-get-package-list

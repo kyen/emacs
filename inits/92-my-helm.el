@@ -4,8 +4,10 @@
 ;; (package-install 'helm)
 (require 'helm)
 (require 'helm-ag)
+(require 'helm-bm)
 (require 'helm-gtags)
 (require 'helm-flymake)
+(require 'helm-migemo)
 
 ;; customize
 (progn
@@ -60,3 +62,18 @@
   '(progn
      (define-key helm-find-files-map (kbd "C-h") 'helm-ff-backspace)
      (define-key helm-find-files-map (kbd "C-i") 'helm-execute-persistent-action)))
+
+;;; helm-bm.el設定
+(require 'helm-bm)
+;; migemoくらいつけようね
+(push '(migemo) helm-source-bm)
+;; annotationはあまり使わないので仕切り線で表示件数減るの嫌
+(setq helm-source-bm (delete '(multiline) helm-source-bm))
+
+(defun bm-toggle-or-helm ()
+  "2回連続で起動したらhelm-bmを実行させる"
+  (interactive)
+  (bm-toggle)
+  (when (eq last-command 'bm-toggle-or-helm)
+    (helm-bm)))
+(global-set-key (kbd "M-SPC") 'bm-toggle-or-helm)
