@@ -28,6 +28,7 @@
 
 ;; 複数ライン同時変更
 (require 'multiple-cursors)
+(require 'expand-region)
 (require 'smartrep)
 
 (declare-function smartrep-define-key "smartrep")
@@ -35,23 +36,28 @@
 (global-set-key (kbd "C-M-c") 'mc/edit-lines)
 (global-set-key (kbd "C-M-r") 'mc/mark-all-in-region)
 
-(global-unset-key "\C-t")
+(defun mc/edit-lines-or-string-rectangle (s e)
+  "C-x r tで同じ桁の場合にmc/edit-lines (C-u M-x mc/mark-all-dwim)"
+  (interactive "r")
+  (if (eq (save-excursion (goto-char s) (current-column))
+          (save-excursion (goto-char e) (current-column)))
+      (call-interactively 'mc/edit-lines)
+    (call-interactively 'string-rectangle)))
+(global-set-key (kbd "C-x r t") 'mc/edit-lines-or-string-rectangle)
 
-(smartrep-define-key global-map "C-t"
-  '(("C-t"      . 'mc/mark-next-like-this)
-    ("n"        . 'mc/mark-next-like-this)
-    ("p"        . 'mc/mark-previous-like-this)
-    ("m"        . 'mc/mark-more-like-this-extended)
-    ("u"        . 'mc/unmark-next-like-this)
-    ("U"        . 'mc/unmark-previous-like-this)
-    ("s"        . 'mc/skip-to-next-like-this)
-    ("S"        . 'mc/skip-to-previous-like-this)
-    ("*"        . 'mc/mark-all-like-this)
-    ("d"        . 'mc/mark-all-like-this-dwim)
-    ("i"        . 'mc/insert-numbers)
-    ("o"        . 'mc/sort-regions)
-    ("O"        . 'mc/reverse-regions)))
+(defun mc/mark-all-dwim-or-expand-region (arg)
+  (interactive "p")
+  (cl-case arg
+    (16 (mc/mark-all-dwim t))
+    (4 (mc/mark-all-dwim nil))
+    (1 (call-interactively 'er/expand-region))))
 
+;; C-M-SPCでer/expand-region
+;; C-u C-M-SPCでmc/mark-all-in-region
+;; C-u C-u C-M-SPCでmc/edit-lines
+(global-set-key (kbd "C-M-SPC") 'mc/mark-all-dwim-or-expand-region)
+
+;; ace-jump-mode
 ;; ヒント文字に使う文字を指定する
 (setq ace-jump-mode-move-keys
       (append "asdfghjkl;:]qwertyuiop@zxcvbnm,." nil))
@@ -61,3 +67,4 @@
 (global-set-key (kbd "C-M-;") 'ace-jump-line-mode)
 
 (global-ace-isearch-mode 1)
+

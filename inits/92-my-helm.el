@@ -77,3 +77,19 @@
   (when (eq last-command 'bm-toggle-or-helm)
     (helm-bm)))
 (global-set-key (kbd "M-SPC") 'bm-toggle-or-helm)
+
+;; helm-swoop
+(require 'helm-swoop)
+;;; isearchからの連携を考えるとC-r/C-sにも割り当て推奨
+(define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+(define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+
+(cl-defun helm-swoop-nomigemo (&key $query ($multiline current-prefix-arg))
+  "シンボル検索用Migemo無効版helm-swoop"
+  (interactive)
+  (let ((helm-swoop-pre-input-function
+         (lambda () (format "\\_<%s\\_> " (thing-at-point 'symbol)))))
+    (helm-swoop :$source (delete '(migemo) (copy-sequence (helm-c-source-swoop)))
+                :$query $query :$multiline $multiline)))
+;;; C-M-:に割り当て
+(global-set-key (kbd "C-M-:") 'helm-swoop-nomigemo)

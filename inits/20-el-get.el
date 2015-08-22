@@ -14,6 +14,7 @@
     helm-ls-git
     helm-gtags
     helm-migemo
+    helm-swoop
     flymake
     emmet-mode
     yaml-mode
@@ -36,6 +37,8 @@
     ace-isearch
     avy
     exec-path-from-shell
+    expand-region
+    whitespace
     elpa:helm-ag
     elpa:helm-emmet
     elpa:helm-flymake
