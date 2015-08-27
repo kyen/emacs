@@ -48,6 +48,7 @@
     elpa:solarized-theme
     elpa:wgrep-ag
     elpa:ace-jump-mode
+    elpa:highlight-thing
     ;; from GitHub
     yasuyk/helm-bm
     ))
