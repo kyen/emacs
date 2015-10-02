@@ -5,7 +5,6 @@
 (require 'helm)
 (require 'helm-ag)
 (require 'helm-bm)
-(require 'helm-gtags)
 (require 'helm-flymake)
 (require 'helm-migemo)
 
@@ -44,16 +43,6 @@
   (global-unset-key (kbd "C-z"))
   (custom-set-variables
    '(helm-command-prefix-key "C-z")))
-
-;; gtags setting
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-;; key bindings
-(add-hook 'helm-gtags-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
-             (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
-             (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
-             (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
 
 ;; ag
 (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
