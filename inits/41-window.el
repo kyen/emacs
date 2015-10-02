@@ -50,3 +50,17 @@
 
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-merge-split-window-function 'split-window-horizontally)
+
+;; smartrep
+;; window resize
+(smartrep-define-key global-map "C-x"
+  '(("-" . shrink-window)
+    ("^" . enlarge-window)
+    ("{" . shrink-window-horizontally)
+    ("}" . enlarge-window-horizontally)))
+;; text scale
+(define-key global-map (kbd "<f2>") nil)
+(smartrep-define-key global-map "<f2>"
+  '(("g" . text-scale-increase)
+    ("l" . text-scale-decrease)))
+(global-set-key (kbd "<f2> f") 'find-file)
