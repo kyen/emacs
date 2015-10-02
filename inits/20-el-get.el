@@ -39,6 +39,8 @@
     exec-path-from-shell
     expand-region
     whitespace
+;;    mew
+    markdown-mode
     elpa:helm-ag
     elpa:helm-emmet
     elpa:helm-flymake
@@ -48,6 +50,8 @@
     elpa:solarized-theme
     elpa:wgrep-ag
     elpa:ace-jump-mode
+    elpa:highlight-thing
+    elpa:google-c-style
     ;; from GitHub
     yasuyk/helm-bm
     ))

@@ -1,19 +1,16 @@
 ;;--------------------------------------------------
 ;;GTAG
 ;;--------------------------------------------------
-(require 'gtags)
-(require 'anything-gtags)
+(require 'helm-gtags)
 
-(autoload 'gtags-mode "gtags" "" t)
-(setq gtags-mode-hook
-      '(lambda ()
-         (local-set-key "\M-t" 'gtags-find-tag)
-         (local-set-key "\M-r" 'gtags-find-rtag)
-         (local-set-key "\M-s" 'gtags-find-symbol)
-         (local-set-key "\C-t" 'gtags-pop-stack)
-         ))
+;; gtags setting
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
 
-;; gtags-mode を使いたい mode の hook に追加する
-(add-hook 'c-mode-common-hook
-          '(lambda()
-           (gtags-mode 1)))
+;; key bindings
+(add-hook 'helm-gtags-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
+             (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
+             (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
+             (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
