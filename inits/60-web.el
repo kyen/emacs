@@ -21,3 +21,9 @@
 (setq browse-url-browser-function 'w3m-browse-url)
 ;; 新規タブで browse-url する
 (setq browse-url-new-window-flag t)
+
+;; markdown-mode
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
