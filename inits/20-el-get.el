@@ -41,6 +41,8 @@
     whitespace
 ;;    mew
     markdown-mode
+    visual-regexp-steroids
+    pcre2el
     elpa:helm-ag
     elpa:helm-emmet
     elpa:helm-flymake
