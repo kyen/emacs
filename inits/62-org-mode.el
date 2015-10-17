@@ -86,7 +86,7 @@
 (setq org-capture-templates
       '(("t" "Todo" entry
          (file+headline "todo.org" "Tasks")
-         (function org-todo-read-template)
+         (function org-todo-read-template))
         ("b" "Book" entry
          (file+headline "journal.org" "Reviews")
          (function org-book-review-read-template))
@@ -101,7 +101,7 @@
          (function org-code-reading-read-template))
         ("p" "Project" entry
          (file+headline "projects.org" "Projects")
-         (function org-projects-read-template)))))
+         (function org-projects-read-template))))
 
 ;; agenda settings
 ;; アジェンダ表示の対象ファイル
