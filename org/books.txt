@@ -1,0 +1,8 @@
+* %^{Book Title} %t :reading:
+:PROPERTIES:
+:Title:    %?
+:Author:  
+:Year:      
+:Publisher:
+:END:
+Comments: 
