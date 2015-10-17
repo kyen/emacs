@@ -4,6 +4,7 @@
   '(
     ag
     bm
+    f
     shell-history
     shell-pop
     color-theme
@@ -41,6 +42,9 @@
     whitespace
 ;;    mew
     markdown-mode
+    visual-regexp-steroids
+    pcre2el
+    clipmon
     elpa:helm-ag
     elpa:helm-emmet
     elpa:helm-flymake

@@ -64,3 +64,5 @@
   '(("g" . text-scale-increase)
     ("l" . text-scale-decrease)))
 (global-set-key (kbd "<f2> f") 'find-file)
+
+(setq hl-line-face 'underline)
