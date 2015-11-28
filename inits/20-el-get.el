@@ -45,6 +45,8 @@
     visual-regexp-steroids
     pcre2el
     clipmon
+    isearch-dabbrev
+    plantuml-mode
     elpa:helm-ag
     elpa:helm-emmet
     elpa:helm-flymake

@@ -32,7 +32,7 @@
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)
                       ("reading" . ?r) ("films" . ?f) ("project" . ?p)
                       ("web" . ?e) ("code" . ?c)
-                      ("dialy" . ?d) ("ideas" . ?i)))
+                      ("dialy" . ?d) ("notes" . ?n) ("ideas" . ?i)))
 
 ;; column settings
 ; global Effort estimate values
@@ -91,11 +91,17 @@
          (file+headline "journal.org" "Reviews")
          (function org-book-review-read-template))
         ("d" "Dialy" entry
-         (file+headline "journal.org" "Dialy")
-         "\n* %^{Title} %t :dialy:")
+         (file+datetree "journal.org")
+         "\n* %^{Title} :dialy:")
+        ("n" "Note" entry
+         (file+datetree "journal.org")
+         "\n* %^{Title} :notes:")
         ("i" "Idea" entry
          (file+headline "journal.org" "Ideas")
          "\n* %^{Title} %t :ideas:")
+        ("s" "Software" entry
+         (file+headline "software.org" "Notes")
+         "\n* %^{Title} %^g")
         ("c" "Code Reading" entry
          (file+headline "software.org" "Code Readings")
          (function org-code-reading-read-template))
@@ -125,3 +131,11 @@
                         (quote ((agenda time-up priority-down tag-up) )))
                        (org-deadline-warning-days 0)))))
          ))
+
+;; plantuml
+(setq org-plantuml-jar-path "/usr/local/lib/plantuml.jar")
+(defun org-plantuml-init ()
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   (add-to-list 'org-babel-load-languages '(plantuml . t))))
+(add-hook 'org-mode-hook 'org-plantuml-init)
