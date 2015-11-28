@@ -30,9 +30,6 @@
 ;; Alt + 矢印でウィンドウを移動する
 (windmove-default-keybindings 'meta) ; Alt の場合は meta を指定
 
-(require 'powerline)
-(powerline-center-theme)
-
 (if window-system (progn
     (set-frame-parameter nil 'alpha 95) ;透明度
     ))

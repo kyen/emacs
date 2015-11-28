@@ -1,8 +1,10 @@
-* %^{Book Title} %t :reading:
+* TODO %^{Book Title} %t :reading:
 :PROPERTIES:
 :Title:    %?
-:Author:  
-:Year:      
-:Publisher:
+:Author: 
+:Year: 
+:Publisher: 
+:Amazon:
+:Price:
 :END:
 Comments: 
