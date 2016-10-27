@@ -1,26 +1,15 @@
 ;; 設定の参考
 ;; http://d.hatena.ne.jp/sugyan/20140227/1393511303
-;;; helm
-;; (package-install 'helm)
+
 (require 'helm)
 (require 'helm-ag)
 (require 'helm-bm)
 (require 'helm-flymake)
-(require 'helm-migemo)
 
-;;; この修正が必要(migemo and swoop)
-(eval-after-load "helm-migemo"
-  '(defun helm-compile-source--candidates-in-buffer (source)
-     (helm-aif (assoc 'candidates-in-buffer source)
-         (append source
-                 `((candidates
-                    . ,(or (cdr it)
-                           (lambda ()
-                             ;; Do not use `source' because other plugins
-                             ;; (such as helm-migemo) may change it
-                             (helm-candidates-in-buffer (helm-get-current-source)))))
-                   (volatile) (match identity)))
-       source)))
+(require 'helm-config)
+
+(helm-mode t)
+(helm-migemo-mode t)
 
 ;; customize
 (progn
@@ -96,3 +85,4 @@
                 :$query $query :$multiline $multiline)))
 ;;; C-M-:に割り当て
 (global-set-key (kbd "C-M-:") 'helm-swoop-nomigemo)
+

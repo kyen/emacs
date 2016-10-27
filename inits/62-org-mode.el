@@ -2,8 +2,12 @@
 ;; org-modeの初期化
 (require 'org-install)
 (require 'org-capture)
+;;(require 'o-blog)
 
 (setq org-return-follows-link t)
+
+;; 時間がおかしいので
+(set-time-zone-rule "GMT-9")
 
 ;; キーバインドの設定
 (define-key global-map "\C-cl" 'org-store-link)
@@ -20,13 +24,15 @@
 (setq org-hide-leading-stars t)
 
 ;; org-default-notes-fileのディレクトリ
-(setq org-directory "~/Dropbox/memo")
+(setq org-directory "c:/Users/kenya.yabe/Dropbox/memo")
+(setq org-mobile-directory "c:/Users/kenya.yabe/Dropbox/mobileorg")       ; MobileOrg用ディレクトリ
 
 ;; org-default-notes-fileのファイル名
 (setq org-default-notes-file "notes.org")
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "STARTED(s) WAITING(w) APPT(a)" "|"
+                  "UNREVIEWED(u)" "|"
                   "DONE(d)" "CANCELLED(c) DEFERRED(f)")))
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)
@@ -88,7 +94,7 @@
          (file+headline "todo.org" "Tasks")
          (function org-todo-read-template))
         ("b" "Book" entry
-         (file+headline "journal.org" "Reviews")
+,         (file+headline "journal.org" "Reviews")
          (function org-book-review-read-template))
         ("d" "Dialy" entry
          (file+headline "journal.org" "Dialy")
@@ -101,7 +107,10 @@
          (function org-code-reading-read-template))
         ("p" "Project" entry
          (file+headline "projects.org" "Projects")
-         (function org-projects-read-template))))
+         (function org-projects-read-template))
+        ("q" "Question" entry
+         (file+headline "question.org" "Question")
+         (function org-todo-read-template))))
 
 ;; agenda settings
 ;; アジェンダ表示の対象ファイル
@@ -125,3 +134,21 @@
                         (quote ((agenda time-up priority-down tag-up) )))
                        (org-deadline-warning-days 0)))))
          ))
+
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))
+     ;; 文字をどれだけ大きくするかを設定する
+     (setq org-present-text-scale 5)
+     ))

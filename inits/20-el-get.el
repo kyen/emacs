@@ -7,27 +7,21 @@
     f
     shell-history
     shell-pop
-    color-theme
-    color-theme-almost-monokai
     gtags
     migemo
     helm
+    helm-ag
     helm-ls-git
     helm-gtags
-    helm-migemo
     helm-swoop
     flymake
     emmet-mode
     yaml-mode
     arduino-mode
-    emacs-w3m
     auto-install
-    cygwin-mount
-    howm
     undo-tree
     auto-complete
     org
-    magit
     powerline
     rainbow-delimiters
     multiple-cursors
@@ -40,34 +34,35 @@
     exec-path-from-shell
     expand-region
     whitespace
-;;    mew
     markdown-mode
     visual-regexp-steroids
     pcre2el
     clipmon
-    elpa:helm-ag
+    org-present
+;;    o-blog
+    google-c-style
+    highlight-thing
+
+    ;; elpa
+    elpa:let-alist
+    elpa:seq
     elpa:helm-emmet
-    elpa:helm-flymake
     elpa:dart-mode
-    elpa:zenburn-theme
-    elpa:molokai-theme
-    elpa:solarized-theme
     elpa:wgrep-ag
     elpa:ace-jump-mode
-    elpa:highlight-thing
-    elpa:google-c-style
-    ;; from GitHub
+    elpa:w3m
+
+    ;; GitHub
     yasuyk/helm-bm
+    josteink/csharp-mode
+    OmniSharp/omnisharp-emacs
+    flycheck/flycheck
+    tam17aki/helm-flymake
+    magit/magit
     ))
 
 (loop for pkg in el-get-package-list
       do (eval `(el-get-bundle ,pkg)))
 
-;;(defvar el-get-package-list-from-elpa
-;;  '(
-;;    ;; ここに使っているパッケージを書く。
-;;    ))
-;;
-;;(loop for pkg in el-get-package-list-from-elpa
-;;      for pkg_with_elpa = (intern-soft (concat "elpa:" pkg))
-;;      do (eval `(el-get-bundle ,pkg_with_elpa)))
+(el-get-bundle dracula-theme
+  :type github :pkgname "dracula/emacs")

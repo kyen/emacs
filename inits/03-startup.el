@@ -6,3 +6,9 @@
 ;;; .#* とかのバックアップファイルを作らない
 ;; (setq auto-save-default nil)
 
+; server start for emacs-client
+(require 'server)
+(if (eq window-system 'ns)
+  (progn
+    (server-start)
+    ))
