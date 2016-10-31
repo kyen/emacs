@@ -2,7 +2,7 @@
 ;; org-mode‚Ì‰Šú‰»
 (require 'org-install)
 (require 'org-capture)
-;;(require 'o-blog)
+(require 'o-blog)
 
 (setq org-return-follows-link t)
 

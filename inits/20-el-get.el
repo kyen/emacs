@@ -5,7 +5,6 @@
     ag
     bm
     f
-    shell-history
     shell-pop
     gtags
     migemo
@@ -26,39 +25,36 @@
     rainbow-delimiters
     multiple-cursors
     smartrep
-    evil
     ddskk
     wgrep
     ace-isearch
     avy
     exec-path-from-shell
     expand-region
-    whitespace
     markdown-mode
     visual-regexp-steroids
     pcre2el
-    clipmon
     org-present
-;;    o-blog
+    o-blog
     google-c-style
-    highlight-thing
+;    let-alist
+;    seq
+    ace-jump-mode
+    w3m
 
-    ;; elpa
-    elpa:let-alist
-    elpa:seq
-    elpa:helm-emmet
-    elpa:dart-mode
-    elpa:wgrep-ag
-    elpa:ace-jump-mode
-    elpa:w3m
+    ;; emacswiki
+    emacswiki:shell-history
+    emacswiki:whitespace
 
     ;; GitHub
     yasuyk/helm-bm
+    yasuyk/helm-emmet
     josteink/csharp-mode
     OmniSharp/omnisharp-emacs
     flycheck/flycheck
     tam17aki/helm-flymake
     magit/magit
+    bburns/clipmon
     ))
 
 (loop for pkg in el-get-package-list
@@ -66,3 +62,9 @@
 
 (el-get-bundle dracula-theme
   :type github :pkgname "dracula/emacs")
+
+(el-get-bundle highlight-thing
+  :type github :pkgname "fgeller/highlight-thing.el")
+
+(el-get-bundle wgrep-ag
+  :type github :pkgname "mhayashi1120/Emacs-wgrep")
