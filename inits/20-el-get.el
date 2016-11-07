@@ -41,6 +41,8 @@
 ;    seq
     ace-jump-mode
     w3m
+    isearch-dabbrev
+    plantuml-mode
 
     ;; emacswiki
     emacswiki:shell-history

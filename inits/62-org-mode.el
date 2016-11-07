@@ -1,33 +1,33 @@
 
-;; org-mode‚Ì‰Šú‰»
+;; org-modeï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 (require 'org-install)
 (require 'org-capture)
 (require 'o-blog)
 
 (setq org-return-follows-link t)
 
-;; ŠÔ‚ª‚¨‚©‚µ‚¢‚Ì‚Å
+;; ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½
 (set-time-zone-rule "GMT-9")
 
-;; ƒL[ƒoƒCƒ“ƒh‚Ìİ’è
+;; ï¿½Lï¿½[ï¿½oï¿½Cï¿½ï¿½ï¿½hï¿½Ìİ’ï¿½
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cr" 'org-capture)
 
-;; Šg’£q‚ªorg‚Ìƒtƒ@ƒCƒ‹‚ğŠJ‚¢‚½C©“®“I‚Éorg-mode‚É‚·‚é
+;; ï¿½gï¿½ï¿½ï¿½qï¿½ï¿½orgï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½org-modeï¿½É‚ï¿½ï¿½ï¿½
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
-;; org-mode‚Å‚Ì‹­’²•\¦‚ğ‰Â”\‚É‚·‚é
+;; org-modeï¿½Å‚Ì‹ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½Â”\ï¿½É‚ï¿½ï¿½ï¿½
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
-;; Œ©o‚µ‚Ì—]•ª‚È*‚ğÁ‚·
+;; ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Ì—]ï¿½ï¿½ï¿½ï¿½*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 (setq org-hide-leading-stars t)
 
-;; org-default-notes-file‚ÌƒfƒBƒŒƒNƒgƒŠ
+;; org-default-notes-fileï¿½Ìƒfï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½
 (setq org-directory "c:/Users/kenya.yabe/Dropbox/memo")
-(setq org-mobile-directory "c:/Users/kenya.yabe/Dropbox/mobileorg")       ; MobileOrg—pƒfƒBƒŒƒNƒgƒŠ
+(setq org-mobile-directory "c:/Users/kenya.yabe/Dropbox/mobileorg")       ; MobileOrgï¿½pï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½
 
-;; org-default-notes-file‚Ìƒtƒ@ƒCƒ‹–¼
+;; org-default-notes-fileï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 (setq org-default-notes-file "notes.org")
 
 (setq org-todo-keywords
@@ -38,7 +38,7 @@
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)
                       ("reading" . ?r) ("films" . ?f) ("project" . ?p)
                       ("web" . ?e) ("code" . ?c)
-                      ("dialy" . ?d) ("ideas" . ?i)))
+                      ("dialy" . ?d) ("notes" . ?n) ("ideas" . ?i)))
 
 ;; column settings
 ; global Effort estimate values
@@ -97,11 +97,17 @@
 ,         (file+headline "journal.org" "Reviews")
          (function org-book-review-read-template))
         ("d" "Dialy" entry
-         (file+headline "journal.org" "Dialy")
-         "\n* %^{Title} %t :dialy:")
+         (file+datetree "journal.org")
+         "\n* %^{Title} :dialy:")
+        ("n" "Note" entry
+         (file+datetree "journal.org")
+         "\n* %^{Title} :notes:")
         ("i" "Idea" entry
          (file+headline "journal.org" "Ideas")
          "\n* %^{Title} %t :ideas:")
+        ("s" "Software" entry
+         (file+headline "software.org" "Notes")
+         "\n* %^{Title} %^g")
         ("c" "Code Reading" entry
          (file+headline "software.org" "Code Readings")
          (function org-code-reading-read-template))
@@ -113,9 +119,9 @@
          (function org-todo-read-template))))
 
 ;; agenda settings
-;; ƒAƒWƒFƒ“ƒ_•\¦‚Ì‘ÎÛƒtƒ@ƒCƒ‹
+;; ï¿½Aï¿½Wï¿½Fï¿½ï¿½ï¿½_ï¿½\ï¿½ï¿½ï¿½Ì‘ÎÛƒtï¿½@ï¿½Cï¿½ï¿½
 (setq org-agenda-files (list org-directory))
-;; ƒAƒWƒFƒ“ƒ_•\¦‚Å‰ºü‚ğ—p‚¢‚é
+;; ï¿½Aï¿½Wï¿½Fï¿½ï¿½ï¿½_ï¿½\ï¿½ï¿½ï¿½Å‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½
 (add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1)))
 
 (setq org-agenda-custom-commands
@@ -149,6 +155,14 @@
                  (org-remove-inline-images)
                  (org-present-show-cursor)
                  (org-present-read-write)))
-     ;; •¶š‚ğ‚Ç‚ê‚¾‚¯‘å‚«‚­‚·‚é‚©‚ğİ’è‚·‚é
+     ;; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ê‚¾ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ï¿½ï¿½ï¿½é‚©ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
      (setq org-present-text-scale 5)
      ))
+
+;; plantuml
+(setq org-plantuml-jar-path "/usr/local/lib/plantuml.jar")
+(defun org-plantuml-init ()
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   (add-to-list 'org-babel-load-languages '(plantuml . t))))
+(add-hook 'org-mode-hook 'org-plantuml-init)

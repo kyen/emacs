@@ -1,11 +1,10 @@
-;; İ’è‚ÌQl
+;; ï¿½İ’ï¿½ï¿½ÌQï¿½l
 ;; http://d.hatena.ne.jp/sugyan/20140227/1393511303
 
 (require 'helm)
 (require 'helm-ag)
 (require 'helm-bm)
 (require 'helm-flymake)
-
 (require 'helm-config)
 
 (helm-mode t)
@@ -55,15 +54,15 @@
      (define-key helm-find-files-map (kbd "C-h") 'helm-ff-backspace)
      (define-key helm-find-files-map (kbd "C-i") 'helm-execute-persistent-action)))
 
-;;; helm-bm.elİ’è
+;;; helm-bm.elï¿½İ’ï¿½
 (require 'helm-bm)
-;; migemo‚­‚ç‚¢‚Â‚¯‚æ‚¤‚Ë
+;; migemoï¿½ï¿½ï¿½ç‚¢ï¿½Â‚ï¿½ï¿½æ‚¤ï¿½ï¿½
 (push '(migemo) helm-source-bm)
-;; annotation‚Í‚ ‚Ü‚èg‚í‚È‚¢‚Ì‚ÅdØ‚èü‚Å•\¦Œ”Œ¸‚é‚ÌŒ™
+;; annotationï¿½Í‚ï¿½ï¿½Ü‚ï¿½ï¿½gï¿½ï¿½ï¿½È‚ï¿½ï¿½Ì‚Ådï¿½Ø‚ï¿½ï¿½ï¿½ï¿½Å•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌŒï¿½
 (setq helm-source-bm (delete '(multiline) helm-source-bm))
 
 (defun bm-toggle-or-helm ()
-  "2‰ñ˜A‘±‚Å‹N“®‚µ‚½‚çhelm-bm‚ğÀs‚³‚¹‚é"
+  "2ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Å‹Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½helm-bmï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
   (interactive)
   (bm-toggle)
   (when (eq last-command 'bm-toggle-or-helm)
@@ -72,17 +71,16 @@
 
 ;; helm-swoop
 (require 'helm-swoop)
-;;; isearch‚©‚ç‚Ì˜AŒg‚ğl‚¦‚é‚ÆC-r/C-s‚É‚àŠ„‚è“–‚Ä„§
+;;; isearchï¿½ï¿½ï¿½ï¿½ï¿½Ì˜Aï¿½gï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½C-r/C-sï¿½É‚ï¿½ï¿½ï¿½ï¿½è“–ï¿½Äï¿½ï¿½ï¿½
 (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
 (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
 
 (cl-defun helm-swoop-nomigemo (&key $query ($multiline current-prefix-arg))
-  "ƒVƒ“ƒ{ƒ‹ŒŸõ—pMigemo–³Œø”Åhelm-swoop"
+  "ï¿½Vï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pMigemoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½helm-swoop"
   (interactive)
   (let ((helm-swoop-pre-input-function
          (lambda () (format "\\_<%s\\_> " (thing-at-point 'symbol)))))
     (helm-swoop :$source (delete '(migemo) (copy-sequence (helm-c-source-swoop)))
                 :$query $query :$multiline $multiline)))
-;;; C-M-:‚ÉŠ„‚è“–‚Ä
+;;; C-M-:ï¿½ÉŠï¿½ï¿½è“–ï¿½ï¿½
 (global-set-key (kbd "C-M-:") 'helm-swoop-nomigemo)
-

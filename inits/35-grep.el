@@ -40,3 +40,5 @@
 (setq migemo-coding-system 'utf-8-unix)
 (load-library "migemo")
 (migemo-init)
+
+(define-key isearch-mode-map (kbd "<tab>") 'isearch-dabbrev-expand)
