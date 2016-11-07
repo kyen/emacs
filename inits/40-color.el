@@ -2,19 +2,9 @@
 ;;ベースとなるColorの設定
 ;;M-x list-colors-display でリストが出せる
 ;;--------------------------------------------------------
-;; zenburn
-;;(load-theme 'zenburn t)
-;;(load-theme 'molokai t)
-;;(load-theme 'wombat t)
-;;(set-face-attribute 'highlight nil :foreground 'unspecified)
-
-;; color theme
-;; M-x color-theme-select
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-almost-monokai)))
+(add-to-list 'custom-theme-load-path
+             (file-name-as-directory "~/.emacs.d/el-get/dracula-theme"))
+(load-theme 'dracula t)
 
 (require 'whitespace)
 (setq whitespace-style '(face           ; faceで可視化

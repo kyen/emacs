@@ -1,32 +1,38 @@
 
-;; org-mode‚Ì‰Šú‰»
+;; org-modeï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 (require 'org-install)
 (require 'org-capture)
+(require 'o-blog)
 
 (setq org-return-follows-link t)
 
-;; ƒL[ƒoƒCƒ“ƒh‚Ìİ’è
+;; ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½
+(set-time-zone-rule "GMT-9")
+
+;; ï¿½Lï¿½[ï¿½oï¿½Cï¿½ï¿½ï¿½hï¿½Ìİ’ï¿½
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cr" 'org-capture)
 
-;; Šg’£q‚ªorg‚Ìƒtƒ@ƒCƒ‹‚ğŠJ‚¢‚½C©“®“I‚Éorg-mode‚É‚·‚é
+;; ï¿½gï¿½ï¿½ï¿½qï¿½ï¿½orgï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½org-modeï¿½É‚ï¿½ï¿½ï¿½
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
-;; org-mode‚Å‚Ì‹­’²•\¦‚ğ‰Â”\‚É‚·‚é
+;; org-modeï¿½Å‚Ì‹ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½Â”\ï¿½É‚ï¿½ï¿½ï¿½
 (add-hook 'org-mode-hook 'turn-on-font-lock)
 
-;; Œ©o‚µ‚Ì—]•ª‚È*‚ğÁ‚·
+;; ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Ì—]ï¿½ï¿½ï¿½ï¿½*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 (setq org-hide-leading-stars t)
 
-;; org-default-notes-file‚ÌƒfƒBƒŒƒNƒgƒŠ
-(setq org-directory "~/Dropbox/memo")
+;; org-default-notes-fileï¿½Ìƒfï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½
+(setq org-directory "c:/Users/kenya.yabe/Dropbox/memo")
+(setq org-mobile-directory "c:/Users/kenya.yabe/Dropbox/mobileorg")       ; MobileOrgï¿½pï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½
 
-;; org-default-notes-file‚Ìƒtƒ@ƒCƒ‹–¼
+;; org-default-notes-fileï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½
 (setq org-default-notes-file "notes.org")
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "STARTED(s) WAITING(w) APPT(a)" "|"
+                  "UNREVIEWED(u)" "|"
                   "DONE(d)" "CANCELLED(c) DEFERRED(f)")))
 
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ?h)
@@ -88,7 +94,7 @@
          (file+headline "todo.org" "Tasks")
          (function org-todo-read-template))
         ("b" "Book" entry
-         (file+headline "journal.org" "Reviews")
+,         (file+headline "journal.org" "Reviews")
          (function org-book-review-read-template))
         ("d" "Dialy" entry
          (file+datetree "journal.org")
@@ -107,12 +113,15 @@
          (function org-code-reading-read-template))
         ("p" "Project" entry
          (file+headline "projects.org" "Projects")
-         (function org-projects-read-template))))
+         (function org-projects-read-template))
+        ("q" "Question" entry
+         (file+headline "question.org" "Question")
+         (function org-todo-read-template))))
 
 ;; agenda settings
-;; ƒAƒWƒFƒ“ƒ_•\¦‚Ì‘ÎÛƒtƒ@ƒCƒ‹
+;; ï¿½Aï¿½Wï¿½Fï¿½ï¿½ï¿½_ï¿½\ï¿½ï¿½ï¿½Ì‘ÎÛƒtï¿½@ï¿½Cï¿½ï¿½
 (setq org-agenda-files (list org-directory))
-;; ƒAƒWƒFƒ“ƒ_•\¦‚Å‰ºü‚ğ—p‚¢‚é
+;; ï¿½Aï¿½Wï¿½Fï¿½ï¿½ï¿½_ï¿½\ï¿½ï¿½ï¿½Å‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½
 (add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1)))
 
 (setq org-agenda-custom-commands
@@ -131,6 +140,24 @@
                         (quote ((agenda time-up priority-down tag-up) )))
                        (org-deadline-warning-days 0)))))
          ))
+
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))
+     ;; ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ê‚¾ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ï¿½ï¿½ï¿½é‚©ï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
+     (setq org-present-text-scale 5)
+     ))
 
 ;; plantuml
 (setq org-plantuml-jar-path "/usr/local/lib/plantuml.jar")

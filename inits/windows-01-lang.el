@@ -3,27 +3,26 @@
 (set-language-environment 'Japanese)
 (setq default-input-method "japanese")
 
-;; sjisにするぞ
-(set-default-coding-systems 'sjis)
-(set-terminal-coding-system 'sjis)
-(set-buffer-file-coding-system 'sjis)
-(set-keyboard-coding-system 'sjis)
+;;(set-default-coding-systems 'sjis)
+;;(set-terminal-coding-system 'sjis)
+;;(set-buffer-file-coding-system 'sjis)
+;;(set-keyboard-coding-system 'sjis)
 
 ;;; 標準フォント
-(set-default-font "Consolas 11")
+(set-default-font "Myrica M-12:antialias=subpixel")
 
 (set-face-attribute 'default nil
-                    :family "Ricty"
+                    :family "Myrica M:antialias=subpixel"
                     :height 120)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
-                  (cons "Ricty" "iso10646-1"))
+                  (cons "Myrica M:antialias=subpixel" "iso10646-1"))
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0212
-                  (cons "Ricty" "iso10646-1"))
+                  (cons "Myrica M:antialias=subpixel" "iso10646-1"))
 (set-fontset-font (frame-parameter nil 'font)
                   'katakana-jisx0201
-                  (cons "Ricty" "iso10646-1"))
+                  (cons "Myrica M:antialias=subpixel" "iso10646-1"))
 
 ;; 丸数字などの機種依存文字対策
 (coding-system-put 'iso-2022-jp :decode-translation-table
