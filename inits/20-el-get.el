@@ -18,7 +18,6 @@
     yaml-mode
     arduino-mode
     auto-install
-    undo-tree
     auto-complete
     org
     powerline
@@ -43,6 +42,9 @@
     w3m
     isearch-dabbrev
     plantuml-mode
+
+    ;; elpa
+    elpa:undo-tree
 
     ;; emacswiki
     emacswiki:shell-history
