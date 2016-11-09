@@ -2,7 +2,7 @@
 ;; org-mode�̏�����
 (require 'org-install)
 (require 'org-capture)
-(require 'o-blog)
+;;(require 'o-blog)
 
 (setq org-return-follows-link t)
 
@@ -24,8 +24,8 @@
 (setq org-hide-leading-stars t)
 
 ;; org-default-notes-file�̃f�B���N�g��
-(setq org-directory "c:/Users/kenya.yabe/Dropbox/memo")
-(setq org-mobile-directory "c:/Users/kenya.yabe/Dropbox/mobileorg")       ; MobileOrg�p�f�B���N�g��
+(setq org-directory "~/Dropbox/memo")
+(setq org-mobile-directory "~/Dropbox/mobileorg")       ; MobileOrg�p�f�B���N�g��
 
 ;; org-default-notes-file�̃t�@�C����
 (setq org-default-notes-file "notes.org")
